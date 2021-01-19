@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="pointwise_libs",
-    version="0.0.1",
+    version="0.0.5",
     author="Lieu Zheng Hong",
     author_email="lieuzhenghong@gmail.com",
     description="Helper functions for my political science research",
