@@ -20,7 +20,7 @@ def sample_rvps(cdb, STATE_CODE, DEM_RVPS, REP_RVPS, SAMPLE_SIZE):
     # Append Democrats to Republicans to get all VRPs
     all_rvps = dems.append(reps)
     all_rvps["pd"] = 0
-    all_rvps.to_file("all_rvps_before_conversion.shp")
+    # all_rvps.to_file("all_rvps_before_conversion.shp")
 
     # Make a copy so we do not set values on a copy of a slice
     # We will set values of democrat and republican later
@@ -29,7 +29,7 @@ def sample_rvps(cdb, STATE_CODE, DEM_RVPS, REP_RVPS, SAMPLE_SIZE):
     # Convert to WGS84
     all_rvps = all_rvps.to_crs({"init": "epsg:4326"})
     # all_rvps = all_rvps.to_crs("EPSG:4326")
-    all_rvps.to_file("all_rvps.shp")
+    # all_rvps.to_file("all_rvps.shp")
     # print(all_rvps[:10])
 
     # Do a spatial join to get all the RVPs that are in the state
@@ -57,7 +57,7 @@ def sample_rvps(cdb, STATE_CODE, DEM_RVPS, REP_RVPS, SAMPLE_SIZE):
 
     # Now that we have the equidistant projection, let's try to calculate
     # Euclidean distances to and from all points.
-    points_in_state_eqd.to_file("points_before_downsampling.shp")
+    # points_in_state_eqd.to_file("points_before_downsampling.shp")
 
     # Downsample and return
     points_downsampled = points_in_state_eqd.sample(SAMPLE_SIZE, random_state=0)
