@@ -27,8 +27,8 @@ def sample_rvps(cdb, STATE_CODE, DEM_RVPS, REP_RVPS, SAMPLE_SIZE):
     cdb_state = cdb.query(f"STATEFP == '{STATE_CODE}'").copy()
 
     # Convert to WGS84
-    all_rvps = all_rvps.to_crs({"init": "epsg:4326"})
-    # all_rvps = all_rvps.to_crs("EPSG:4326")
+    # all_rvps = all_rvps.to_crs({"init": "epsg:4326"})
+    all_rvps = all_rvps.to_crs("EPSG:4326")
     all_rvps.to_file("all_rvps.shp")
     # print(all_rvps[:10])
 

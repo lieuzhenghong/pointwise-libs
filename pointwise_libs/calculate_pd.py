@@ -33,6 +33,18 @@ def calc_pd(voter_row, districts, pd_type='error'):
     return pd
 
 
+def _get_sum_ED_from_voter_to_knn_(voter, kd_tree: cKDTree, k: int) -> float:
+    '''
+    Should be used with points_downsampled.apply()
+    where the first (implicit) argument is the row of the DataFrame
+    Accepts a voter row, a kd_tree, and the number of neighbours k,
+    and returns a float denoting the sum of distances between
+    that voter's location and its k nearest neighbours.
+    '''
+    distances, indices = kd_tree.query(voter['geometry'], k)
+    return sum(distances)
+
+
 def get_knn_partisanship(voter, voter_type, kd_tree, k, voters):
     # is a tuple of ([Float], [Int])
     neighbours = kd_tree.query(voter['geometry'], k)
